@@ -1,3 +1,8 @@
+#Generates a multiplot bar chart for counties comparing NCED vs. CUCED
+#Date: 06/07/2019
+#BY: D. White and S.Ogletree
+
+
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
