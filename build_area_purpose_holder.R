@@ -6,13 +6,15 @@ library(tidyverse)
 library(sf)
 # build a dataset of all data ---------------------------------------------
 
-cnty <- read.csv("county_key.txt", stringsAsFactors = F)
+# the county abbreviations
+cnty <- read.csv("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/Tables_In/county_key.txt", stringsAsFactors = F)
+#cnty <- c("ALB","BLD","CHS","DGL","GVL","LDN","LEB","MES","SAC","SON","WAS","YRK")
 
-gdb <- "../NCED_CUCED_2018.gdb"
+gdb <- "C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/NCED_CUCED_2018.gdb"
 
-k1 <- read.csv("cu_sub.csv", stringsAsFactors = F) %>% 
+k1 <- read.csv("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/Tables_In/cu_sub.csv", stringsAsFactors = F) %>% 
   filter(variable == "CEHldrTyp" | variable == "CEReas")
-k2 <- read.csv("nced_sub.csv", stringsAsFactors = F) %>% 
+k2 <- read.csv("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/Tables_In/nced_sub.csv", stringsAsFactors = F) %>% 
   filter(Field == "OwnType and EHoldType" | Field == "Purpose")
 
 # loop it -----------------------------------------------------------------
@@ -54,5 +56,9 @@ saveRDS(dset, "data_area-purpose-holder.rds")
 
 dset %>% ggplot(aes(PurposeCommon, log(Area))) + geom_boxplot()
 
-# m1 <- lm(Area ~ PurposeCommon + HolderCommon, data = dset)
-# plot(m1)
+
+
+m1 <- lm(Area ~ PurposeCommon + HolderCommon, data = dset)
+plot(m1)
+summary(m1)
+
