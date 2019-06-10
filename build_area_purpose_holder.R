@@ -54,11 +54,36 @@ dset <- bind_rows(dlist)
 
 saveRDS(dset, "data_area-purpose-holder.rds")
 
-dset %>% ggplot(aes(PurposeCommon, log(Area))) + geom_boxplot()
+dset_plot <- dset %>% ggplot(aes(PurposeCommon, log(Area))) + geom_boxplot() + ggtitle("CUCE + NCED")
+dset_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
 
 
+dset_CUCE <- filter(dset, set == "CUCE") 
+dset_CUCE_plot <- dset_CUCE %>% ggplot(aes(PurposeCommon, log(Area)))+ geom_boxplot() + ggtitle("CUCE")
+dset_CUCE_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
 
-m1 <- lm(Area ~ PurposeCommon + HolderCommon, data = dset)
+
+dset_NCED <- filter(dset, set == "NCED") 
+dset_NCED_plot <- dset_NCED %>% ggplot(aes(PurposeCommon, log(Area))) + geom_boxplot() + ggtitle("NCED")
+dset_NCED_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
+
+dset_plot <- dset %>% ggplot(aes(HolderCommon, log(Area))) + geom_boxplot() + ggtitle("CUCE + NCED")
+dset_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
+
+
+dset_CUCE <- filter(dset, set == "CUCE") 
+dset_CUCE_plot <- dset_CUCE %>% ggplot(aes(HolderCommon, log(Area)))+ geom_boxplot() + ggtitle("CUCE")
+dset_CUCE_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
+
+
+dset_NCED <- filter(dset, set == "NCED") 
+dset_NCED_plot <- dset_NCED %>% ggplot(aes(HolderCommon, log(Area))) + geom_boxplot() + ggtitle("NCED")
+dset_NCED_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
+
+
+m1 <- lm(Area ~ PurposeCommon, data = dset_CUCE)
 plot(m1)
 summary(m1)
+
+
 
