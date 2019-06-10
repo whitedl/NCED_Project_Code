@@ -56,29 +56,33 @@ saveRDS(dset, "data_area-purpose-holder.rds")
 
 dset_plot <- dset %>% ggplot(aes(PurposeCommon, log(Area))) + geom_boxplot() + ggtitle("CUCE + NCED")
 dset_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
-
+ggsave("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/FinalProducts/box_plot_area_purpose_CUCE_NCED.png")
 
 dset_CUCE <- filter(dset, set == "CUCE") 
 dset_CUCE_plot <- dset_CUCE %>% ggplot(aes(PurposeCommon, log(Area)))+ geom_boxplot() + ggtitle("CUCE")
 dset_CUCE_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
-
+ggsave("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/FinalProducts/box_plot_area_purpose_CUCE.png")
 
 dset_NCED <- filter(dset, set == "NCED") 
 dset_NCED_plot <- dset_NCED %>% ggplot(aes(PurposeCommon, log(Area))) + geom_boxplot() + ggtitle("NCED")
 dset_NCED_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
+ggsave("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/FinalProducts/box_plot_area_purpose_NCED.png")
+
 
 dset_plot <- dset %>% ggplot(aes(HolderCommon, log(Area))) + geom_boxplot() + ggtitle("CUCE + NCED")
 dset_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
+ggsave("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/FinalProducts/box_plot_area_holder_CUCE_NCED.png")
 
 
 dset_CUCE <- filter(dset, set == "CUCE") 
 dset_CUCE_plot <- dset_CUCE %>% ggplot(aes(HolderCommon, log(Area)))+ geom_boxplot() + ggtitle("CUCE")
 dset_CUCE_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
-
+ggsave("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/FinalProducts/box_plot_area_holder_CUCE.png")
 
 dset_NCED <- filter(dset, set == "NCED") 
 dset_NCED_plot <- dset_NCED %>% ggplot(aes(HolderCommon, log(Area))) + geom_boxplot() + ggtitle("NCED")
 dset_NCED_plot + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.title = element_text(hjust = 0.5))
+ggsave("C:/Users/admin/Box Sync/Default Sync Folder/Projects/NSF_CNH/Papers/NCED/FinalProducts/box_plot_area_holder_NCED.png")
 
 
 m1 <- lm(Area ~ PurposeCommon, data = dset_CUCE)
